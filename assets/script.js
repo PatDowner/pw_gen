@@ -27,7 +27,7 @@ function generatePassword() {
      let len = prompt(`Password length?
      (min: 8 characters, max: 128 characters)`)
 
-     // Rejects invalid value with an error message.
+     // Rejects invalid password length value with an error message.
      if (!(len >= 8 && len <= 128)) {
           return 'Error: Enter a password length between 8 and 128 characters.'
      }
@@ -43,25 +43,28 @@ function generatePassword() {
      let lc = confirm(`Do you want to include any lowercase letters?
      ("OK" = "yes" and "cancel" = no)`)
      if (lc) {
+          // if ok/yes, then add lowerCase to the types array
           type.push('lowerCase')
      }
 
      let num = confirm(`Do you want to include any numbers?
      ("OK" = "yes" and "cancel" = no)`)
      if (num) {
+          // if ok/yes, then add numbers to the types array
           type.push('numbers')
      }
 
      let sp = confirm(`Do you want to include any special characters?
      ("OK" = "yes" and "cancel" = no)`)
      if (sp) {
+          // if ok/yes, then add special to the types array
           type.push('special')
      }
 
 
      // Rejects if no character types selected
      if (type.length === 0) {
-          return 'Error: Please select at least one character type'
+          return 'Error: Please select at least one character type.'
      }
 
      //randomly assigns a character type to each character of the password, stored in array pwType
@@ -98,10 +101,14 @@ function generatePassword() {
                for (let i = 0; i < len; i++) {
                     pwGen = pwGen + pw[i]
                }
+
+               //console.logs just for checking functionality
                console.log('it worked')
                console.log(type)
                console.log(pwType)
                console.log(pw)
+
+               //send generated password back to page
                return pwGen
 
           } else {
