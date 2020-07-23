@@ -77,44 +77,19 @@ function generatePassword() {
      //check if password will have at least one of each type of requested character before moving forward
      for (let i = 0; i < type.length; i++) {
           if (pwType.includes(type[i])) {
-               //if it will have at least one of each type of requested character...
-
-               // randomly assigns value to a character of password (stored in array pw) based on character type in pwType
-               for (let i = 0; i < len; i++) {
-
-                    if (pwType[i] === 'upperCase') {
-                         let ucNum = Math.floor(Math.random() * upperCase.length)
-                         pw.push(upperCase[ucNum])
-                    } else if (pwType[i] === 'lowerCase') {
-                         let lcNum = Math.floor(Math.random() * lowerCase.length)
-                         pw.push(lowerCase[lcNum])
-                    } else if (pwType[i] === 'numbers') {
-                         let numNum = Math.floor(Math.random() * numbers.length)
-                         pw.push(numbers[numNum])
-                    } else if (pwType[i] === 'special') {
-                         let spNum = Math.floor(Math.random() * special.length)
-                         pw.push(special[spNum])
-                    }
-               }
-
-               // Concatenate other characters of pw
-               for (let i = 0; i < len; i++) {
-                    pwGen = pwGen + pw[i]
-               }
-
-               //console.logs just for checking functionality
-               console.log('it worked')
-               console.log(type)
-               console.log(pwType)
-               console.log(pw)
-
-               //send generated password back to page
-               return pwGen
-
+               console.log('confirmed character type exists')
           } else {
                // repeat assigning character type to each character of the password
-               console.log('try again') // just there to track how many times it has to try again
+
+               // just there to track how many times it has to try again
+               console.log('try again')
+
+               // clear pwType list
                pwType = []
+
+               // restart for loop's count (so that it'll run the check again from the beginning.)
+               i = 0
+
                //randomly assigns a character type to each character of the password, stored in array pwType
                for (let i = 0; i < len; i++) {
                     let charType = (Math.floor(Math.random() * type.length))
@@ -122,6 +97,38 @@ function generatePassword() {
                }
           }
      }
+
+     // randomly assigns value to a character of password (stored in array pw) based on character type in pwType
+     for (let i = 0; i < len; i++) {
+
+          if (pwType[i] === 'upperCase') {
+               let ucNum = Math.floor(Math.random() * upperCase.length)
+               pw.push(upperCase[ucNum])
+          } else if (pwType[i] === 'lowerCase') {
+               let lcNum = Math.floor(Math.random() * lowerCase.length)
+               pw.push(lowerCase[lcNum])
+          } else if (pwType[i] === 'numbers') {
+               let numNum = Math.floor(Math.random() * numbers.length)
+               pw.push(numbers[numNum])
+          } else if (pwType[i] === 'special') {
+               let spNum = Math.floor(Math.random() * special.length)
+               pw.push(special[spNum])
+          }
+     }
+
+     // Concatenate other characters of pw
+     for (let i = 0; i < len; i++) {
+          pwGen = pwGen + pw[i]
+     }
+
+     //console.logs just for checking functionality
+     console.log('it worked')
+     console.log(type)
+     console.log(pwType)
+     console.log(pw)
+
+     //send generated password back to page
+     return pwGen
 
 
 }
