@@ -71,9 +71,11 @@ function generatePassword() {
      }
 
 
-     //check if have one of each type
+     //check if password will have at least one of each type of requested character
      for (let i = 0; i < type.length; i++) {
           if (pwType.includes(type[i])) {
+               //if it will have at least one of each type of requested character...
+
                // randomly assigns value to a character of password (stored in array pw) based on character type in pwType
                for (let i = 0; i < len; i++) {
 
@@ -103,7 +105,8 @@ function generatePassword() {
                return pwGen
 
           } else {
-               console.log('try again')
+               // repeat assigning character type to each character of the password
+               console.log('try again') // just there to track how many times it has to try again
                pwType = []
                //randomly assigns a character type to each character of the password, stored in array pwType
                for (let i = 0; i < len; i++) {
