@@ -58,7 +58,7 @@ function generatePassword() {
           type.push('special')
      }
 
-     console.log(type)
+
      // Rejects if no character types selected
      if (type.length === 0) {
           return 'Error: Please select at least one character type'
@@ -70,30 +70,49 @@ function generatePassword() {
           pwType.push(type[charType])
      }
 
-     // randomly assigns value to a character of password (stored in array pw) based on character type in pwType
-     for (let i = 0; i < len; i++) {
 
-          if (pwType[i] === 'upperCase') {
-               let ucNum = Math.floor(Math.random() * upperCase.length)
-               pw.push(upperCase[ucNum])
-          } else if (pwType[i] === 'lowerCase') {
-               let lcNum = Math.floor(Math.random() * lowerCase.length)
-               pw.push(lowerCase[lcNum])
-          } else if (pwType[i] === 'numbers') {
-               let numNum = Math.floor(Math.random() * numbers.length)
-               pw.push(numbers[numNum])
-          } else if (pwType[i] === 'special') {
-               let spNum = Math.floor(Math.random() * special.length)
-               pw.push(special[spNum])
+     //check if have one of each type
+     for (let i = 0; i < type.length; i++) {
+          if (pwType.includes(type[i])) {
+               // randomly assigns value to a character of password (stored in array pw) based on character type in pwType
+               for (let i = 0; i < len; i++) {
+
+                    if (pwType[i] === 'upperCase') {
+                         let ucNum = Math.floor(Math.random() * upperCase.length)
+                         pw.push(upperCase[ucNum])
+                    } else if (pwType[i] === 'lowerCase') {
+                         let lcNum = Math.floor(Math.random() * lowerCase.length)
+                         pw.push(lowerCase[lcNum])
+                    } else if (pwType[i] === 'numbers') {
+                         let numNum = Math.floor(Math.random() * numbers.length)
+                         pw.push(numbers[numNum])
+                    } else if (pwType[i] === 'special') {
+                         let spNum = Math.floor(Math.random() * special.length)
+                         pw.push(special[spNum])
+                    }
+               }
+
+               // Concatenate other characters of pw
+               for (let i = 0; i < len; i++) {
+                    pwGen = pwGen + pw[i]
+               }
+               console.log('it worked')
+               console.log(type)
+               console.log(pwType)
+               console.log(pw)
+               return pwGen
+
+          } else {
+               console.log('try again')
+               pwType = []
+               //randomly assigns a character type to each character of the password, stored in array pwType
+               for (let i = 0; i < len; i++) {
+                    let charType = (Math.floor(Math.random() * type.length))
+                    pwType.push(type[charType])
+               }
           }
      }
 
-     // Concatenate other characters of pw
-     for (let i = 0; i < len; i++) {
-          pwGen = pwGen + pw[i]
-     }
-
-     return pwGen
 
 }
 
@@ -107,4 +126,5 @@ function writePassword() {
 }
 
 // Add event listener to generate button
+
 generateBtn.addEventListener("click", writePassword);
