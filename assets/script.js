@@ -74,7 +74,7 @@ function generatePassword() {
      }
 
 
-     //check if password will have at least one of each type of requested character
+     //check if password will have at least one of each type of requested character before moving forward
      for (let i = 0; i < type.length; i++) {
           if (pwType.includes(type[i])) {
                //if it will have at least one of each type of requested character...
