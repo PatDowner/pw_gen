@@ -88,7 +88,7 @@ function generatePassword() {
                pwType = []
 
                // restart for loop's count (so that it'll run the check again from the beginning.)
-               i = 0
+               i = -1
 
                //randomly assigns a character type to each character of the password, stored in array pwType
                for (let i = 0; i < len; i++) {
